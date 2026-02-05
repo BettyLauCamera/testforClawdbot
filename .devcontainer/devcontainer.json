@@ -1,0 +1,10 @@
+{
+  "name": "Clawdbot Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/node:18",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "forwardPorts": [3000],
+  "postCreateCommand": "chmod +x .devcontainer/scripts/write-env.sh && bash .devcontainer/scripts/write-env.sh && if [ -f package.json ]; then npm ci; elif [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi",
+  "postStartCommand": "echo 'Codespace 已启动。若是 Node 项目，运行：npm start 或 npm run dev。若是 Python 项目，运行：python bot.py'",
+  "remoteUser": "vscode"
+}
